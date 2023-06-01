@@ -9,7 +9,10 @@ const _ShowItem = ({ show, style }) => {
   const { navigate } = useNavigation();
 
   return (
-    <Touchable onPress={() => navigate("Details", { show })}>
+    <Touchable
+      accessibilityRole="button"
+      onPress={() => navigate("Details", { show })}
+    >
       <View style={[styles.container, style]}>
         <Image
           source={{ uri: images.mobile }}

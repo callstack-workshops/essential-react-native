@@ -12,12 +12,17 @@ export const SearchBar = ({ onChangeText, value }) => {
   return (
     <View style={styles.container}>
       <TextInput
+        accessibilityLabel="Text input field"
         onChangeText={onChangeText}
         value={value}
         placeholder="Search shows..."
         style={styles.textInput}
       />
-      <Touchable onPress={onCancel} style={styles.cancelButton}>
+      <Touchable
+        accessibilityRole="button"
+        onPress={onCancel}
+        style={styles.cancelButton}
+      >
         <Text style={styles.cancelText}>Cancel</Text>
       </Touchable>
     </View>
