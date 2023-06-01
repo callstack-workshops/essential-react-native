@@ -9,6 +9,7 @@ const _PosterItem = ({ show, style }) => {
 
   return (
     <TouchableOpacity
+      accessibilityRole="button"
       activeOpacity={0.6}
       onPress={() => navigate("Details", { show })}
     >
