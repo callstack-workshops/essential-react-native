@@ -9,11 +9,12 @@ export const SearchBar = ({ onChangeText, value }) => {
   return (
     <View>
       <TextInput
+        accessibilityLabel="Text input field"
         onChangeText={onChangeText}
         value={value}
         placeholder="Search shows..."
       />
-      <Pressable onPress={onCancel}>
+      <Pressable accessibilityRole="button" onPress={onCancel}>
         <Text>Cancel</Text>
       </Pressable>
     </View>
