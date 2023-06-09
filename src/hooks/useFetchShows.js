@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const API = 'https://training-tv-shows.fly.dev';
+
 export const useFetchShows = (path) => {
   const [shows, setShows] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -10,11 +12,10 @@ export const useFetchShows = (path) => {
       let data = null;
 
       try {
-        // Change to your localhost ip address (needed on Android) instead of just using "localhost"
-        data = await fetch(`http://192.168.1.103:8080/${path}`);
+        data = await fetch(`${API}/${path}`);
       } catch (e) {
         alert(
-          "Remember to start the server with CORS allowing 'http://localhost:8000'."
+          "Something Went Wrong!"
         );
         return;
       }
