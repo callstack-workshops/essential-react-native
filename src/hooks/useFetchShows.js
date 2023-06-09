@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+const API = 'https://training-tv-shows.fly.dev';
+
 export const useFetchShows = (path, storageKey) => {
   const [shows, setShows] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,11 +21,10 @@ export const useFetchShows = (path, storageKey) => {
       let data = null;
 
       try {
-        // Change to your localhost ip address (needed on Android) instead of just using "localhost"
-        data = await fetch(`http://192.168.1.103:8080/${path}`);
+        data = await fetch(`${API}/${path}`);
       } catch (e) {
         alert(
-          "Remember to start the server with CORS allowing 'http://localhost:8000'."
+          "Something went wrong!"
         );
         return;
       }
