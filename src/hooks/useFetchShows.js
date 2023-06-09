@@ -1,40 +1,36 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
-const API = 'https://training-tv-shows.fly.dev'
+const API = "https://training-tv-shows.fly.dev";
 
 export const useFetchShows = (path) => {
   const [shows, setShows] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    let _isMounted = true;
-    const fetchShows = async () => {
-      let data = null;
+  const fetchShows = useCallback(
+    async (controller) => {
+      const { signal } = controller;
 
       try {
-        data = await fetch(`${API}/${path}`);
+        const res = await fetch(`${API}/${path}`, { signal });
+        const shows = await res.json();
+        setShows(shows);
+        setIsLoading(false);
       } catch (e) {
-        alert(
-          "Something Went wrong"
-        );
+        alert("Something Went wrong");
         return;
       }
+    },
+    [path]
+  );
 
-      const shows = await data.json();
-      await setTimeout(async () => {
-        if (_isMounted) {
-          setShows(shows);
-          setIsLoading(false);
-        }
-      }, 350);
-    };
-
-    fetchShows();
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchShows(controller);
 
     return () => {
-      _isMounted = false;
+      controller.abort();
     };
-  }, [path]);
+  }, [fetchShows]);
 
   return { shows: shows.sort((a, b) => (a.name > b.name ? 1 : -1)), isLoading };
 };
