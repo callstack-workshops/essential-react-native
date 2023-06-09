@@ -5,9 +5,13 @@ import { useFetchShows } from "../hooks/useFetchShows";
 import { useSearchShows } from "../hooks/useSearchShows";
 import { SearchBar } from "../components/SearchBar";
 import { WatchedList } from "../components/WatchedList";
+import { storageWatchedKey } from "../constants";
 
 export const WatchedScreen = () => {
-  const { shows: data, isLoading } = useFetchShows("watched");
+  const { shows: data, isLoading } = useFetchShows(
+    "watched",
+    storageWatchedKey
+  );
   const { shows, onSearchChange, value } = useSearchShows(data);
 
   return (

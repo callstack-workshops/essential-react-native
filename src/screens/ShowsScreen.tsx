@@ -5,12 +5,13 @@ import { colors } from "../colors";
 import { useFetchShows } from "../hooks/useFetchShows";
 import { useSearchShows } from "../hooks/useSearchShows";
 import { SearchBar } from "../components/SearchBar";
-import { ShowList } from "../components/ShowList";
 import { getAlphabeticalSections } from "../utils";
+import { ShowList } from "../components/ShowList";
+import { storageShowsKey } from "../constants";
 
 export const ShowsScreen = () => {
   const insets = useSafeAreaInsets();
-  const { shows: data, isLoading } = useFetchShows("shows");
+  const { shows: data, isLoading } = useFetchShows("shows", storageShowsKey);
   const { shows, onSearchChange, value } = useSearchShows(data);
   const sections = useMemo(() => getAlphabeticalSections(shows), [shows]);
 
