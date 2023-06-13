@@ -115,6 +115,15 @@ export const useAnimatedValue = (initialValue) => {
 
 ![](./images/09.gif)
 
-### 9. Native modules
+### 9. Your first Config Plugin
 
-* Let's run `expo eject`
+* Create a new Expo module using `npx create-expo-module CustomModule` next to directory of your project. Name it `custom-module`.
+* Leave it unchanged. Create a new `app.plugin.js` file.
+* Write a plugin to add `MySecretKey` variable to `Info.plist` and to Android Manifest metadata using `addMetaDataItemToMainApplication` function from `AndroidConfig` helper. See https://docs.expo.dev/modules/config-plugin-and-native-module-tutorial/#4-creating-a-new-config-plugin for details.
+* Add your module as a dependency of your project by adding:
+
+`"custom-module": "file:../custom-module"`
+
+To package.json dependencies. Run `npm install`.
+* Add "custom-module" to list of expo plugins in `app.json`.
+* Ensure your changes are applied by running `EXPO_DEBUG=1 npx expo prebuild`. It should show you that your plugin gets applied and show you generated keys.
