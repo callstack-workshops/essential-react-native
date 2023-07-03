@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
-
-export const useSearchShows = (data) => {
+import { Show } from "../types";
+export const useSearchShows = (data: Show[]) => {
   const [value, setValue] = useState("");
 
-  const onSearchChange = useCallback((value) => {
+  const onSearchChange = useCallback((value: string) => {
     setValue(value);
   }, []);
 

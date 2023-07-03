@@ -1,13 +1,14 @@
 import { useEffect, useState, useCallback } from "react";
+import { Show } from "../types";
 
 const API = "https://training-tv-shows.fly.dev";
 
-export const useFetchShows = (path) => {
-  const [shows, setShows] = useState([]);
+export const useFetchShows = (path: string) => {
+  const [shows, setShows] = useState<Show[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchShows = useCallback(
-    async (controller) => {
+    async (controller: AbortController) => {
       const { signal } = controller;
 
       try {

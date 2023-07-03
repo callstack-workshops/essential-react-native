@@ -1,22 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { colors } from "./src/colors";
+import { ShowsScreen } from "./src/screens/ShowsScreen";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello world!</Text>
+    <>
+      <ShowsScreen />
       <StatusBar style="auto" />
-    </View>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
