@@ -1,7 +1,12 @@
 import React, { useCallback } from "react";
 import { View, TextInput, Text, Pressable } from "react-native";
 
-export const SearchBar = ({ onChangeText, value }) => {
+type SearchBarProps = {
+  onChangeText: (text: string) => void;
+  value: string;
+};
+
+export const SearchBar = ({ onChangeText, value }: SearchBarProps) => {
   const onCancel = useCallback(() => {
     onChangeText("");
   }, [onChangeText]);

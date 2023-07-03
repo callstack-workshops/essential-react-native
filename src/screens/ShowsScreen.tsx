@@ -5,6 +5,7 @@ import { useFetchShows } from "../hooks/useFetchShows";
 import { useSearchShows } from "../hooks/useSearchShows";
 import { SearchBar } from "../components/SearchBar";
 import { getStarsRating } from "../utils";
+import { Show } from "../types";
 
 export const ShowsScreen = () => {
   const { shows: data, isLoading } = useFetchShows("shows");
@@ -12,15 +13,11 @@ export const ShowsScreen = () => {
 
   return (
     <View style={styles.container}>
-      <SearchBar
-        onChangeText={onSearchChange}
-        value={value}
-        placeholder="Search shows..."
-      />
+      <SearchBar onChangeText={onSearchChange} value={value} />
       {isLoading ? (
         <ActivityIndicator color={colors.accent} animating size="large" />
       ) : null}
-      {shows.map(({ id, name, year, images, voteAverage }) => (
+      {shows.map(({ id, name, year, images, voteAverage }: Show) => (
         <View key={id}>
           <Image
             source={{ uri: images.mobile }}
