@@ -4,13 +4,13 @@
 
 * Start a new project using the `expo-cli`.
 * Choose "Managed workflow" and "blank".
-* Modify the `App.js` file to render a "Hello world!". Run it on iOS and Android.
+* Modify the `App.tsx` file to render a "Hello world!". Run it on iOS and Android.
 * Set up https://github.com/callstack/eslint-config-callstack.
 
 ### 2. Core components
 
 * Create a `src/` directory.
-* Our `App.js` will simply render the new screen that we will create: `ShowsScreen.js`.
+* Our `App.tsx` will simply render the new screen that we will create: `ShowsScreen.tsx`.
 * Add a `SearchBar` component which will contain a `TextInput` and a `Cancel` button. 
 When cancelling, clear the `TextInput`.
 * Create a list using `View`, `Image` and `Text`. Use a simple JS `.map` function.
@@ -34,7 +34,7 @@ the `Image`. Use it like:
 ### 3. Styling
 
 * Use `SafeAreaView` and `expo-constants` (from `Constants.statusBarHeight`) to get the correct top 
-space in our app. Do it in `App.js`.
+space in our app. Do it in `App.tsx`.
 * Create our own `Touchable` component. On iOS it will use `TouchableOpacity` and on Android it 
 will use `Pressable` with ripple effect.
 * Style our screen to look like the following design (loading and not loading):
@@ -114,16 +114,3 @@ export const useAnimatedValue = (initialValue) => {
 * See the following gif for the desired effect:
 
 ![](./images/09.gif)
-
-### 9. Your first Config Plugin
-
-* Create a new Expo module using `npx create-expo-module CustomModule` next to directory of your project. Name it `custom-module`.
-* Leave it unchanged. Create a new `app.plugin.js` file.
-* Write a plugin to add `MySecretKey` variable to `Info.plist` and to Android Manifest metadata using `addMetaDataItemToMainApplication` function from `AndroidConfig` helper. See https://docs.expo.dev/modules/config-plugin-and-native-module-tutorial/#4-creating-a-new-config-plugin for details.
-* Add your module as a dependency of your project by adding:
-
-`"custom-module": "file:../custom-module"`
-
-To package.json dependencies. Run `npm install`.
-* Add "custom-module" to list of expo plugins in `app.json`.
-* Ensure your changes are applied by running `EXPO_DEBUG=1 npx expo prebuild`. It should show you that your plugin gets applied and show you generated keys.
