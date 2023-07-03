@@ -1,5 +1,7 @@
 import React, { useCallback } from "react";
-import { View, TextInput, Text, Pressable } from "react-native";
+import { View, TextInput, Text, StyleSheet } from "react-native";
+import { colors } from "../colors";
+import { Touchable } from "./Touchable";
 
 type SearchBarProps = {
   onChangeText: (text: string) => void;
@@ -12,16 +14,46 @@ export const SearchBar = ({ onChangeText, value }: SearchBarProps) => {
   }, [onChangeText]);
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         accessibilityLabel="Text input field"
         onChangeText={onChangeText}
         value={value}
         placeholder="Search shows..."
+        style={styles.textInput}
       />
-      <Pressable accessibilityRole="button" onPress={onCancel}>
-        <Text>Cancel</Text>
-      </Pressable>
+      <Touchable
+        accessibilityRole="button"
+        onPress={onCancel}
+        style={styles.cancelButton}
+      >
+        <Text style={styles.cancelText}>Cancel</Text>
+      </Touchable>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    height: 48,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 8,
+  },
+  textInput: {
+    flex: 1,
+    backgroundColor: colors.grey200,
+    borderRadius: 8,
+    marginLeft: 16,
+    paddingHorizontal: 16,
+    fontSize: 18,
+  },
+  cancelButton: {
+    justifyContent: "center",
+    paddingHorizontal: 16,
+  },
+  cancelText: {
+    color: colors.blue500,
+    fontSize: 18,
+  },
+});

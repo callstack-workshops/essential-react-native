@@ -1,8 +1,21 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  StyleProp,
+  StyleSheet,
+  Text,
+  View,
+  ViewStyle,
+} from "react-native";
 import { getStarsRating } from "../utils";
+import { Show } from "../types";
 
-export const ShowItem = ({ show, style }) => {
+type ShowItemProps = {
+  show: Show;
+  style?: StyleProp<ViewStyle>;
+};
+
+export const ShowItem = ({ show, style }: ShowItemProps) => {
   const { name, year, images, voteAverage } = show;
   return (
     <View style={[styles.container, style]}>
