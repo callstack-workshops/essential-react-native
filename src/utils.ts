@@ -1,4 +1,4 @@
-export const getStarsRating = (rating) => {
+export const getStarsRating = (rating: number) => {
   if (rating >= 1 && rating < 4) return "⭐";
   if (rating >= 4 && rating < 6) return "⭐⭐";
   if (rating >= 6 && rating < 7) return "⭐⭐⭐";

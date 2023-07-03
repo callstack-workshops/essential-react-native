@@ -1,11 +1,10 @@
 import React from "react";
-import { ActivityIndicator, Image, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { colors } from "../colors";
 import { useFetchShows } from "../hooks/useFetchShows";
 import { useSearchShows } from "../hooks/useSearchShows";
 import { SearchBar } from "../components/SearchBar";
-import { getStarsRating } from "../utils";
-import { Show } from "../types";
+import { ShowItem } from "../components/ShowItem";
 
 export const ShowsScreen = () => {
   const { shows: data, isLoading } = useFetchShows("shows");
@@ -15,23 +14,12 @@ export const ShowsScreen = () => {
     <View style={styles.container}>
       <SearchBar onChangeText={onSearchChange} value={value} />
       {isLoading ? (
-        <ActivityIndicator color={colors.accent} animating size="large" />
-      ) : null}
-      {shows.map(({ id, name, year, images, voteAverage }: Show) => (
-        <View key={id}>
-          <Image
-            source={{ uri: images.mobile }}
-            // eslint-disable-next-line react-native/no-inline-styles
-            style={{
-              width: 92.6,
-              height: 139,
-            }}
-            accessibilityIgnoresInvertColors
-          />
-          <Text>{name}</Text>
-          <Text>{year}</Text>
-          <Text>{getStarsRating(voteAverage)}</Text>
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator color={colors.accent} animating size="large" />
         </View>
+      ) : null}
+      {shows.map((show) => (
+        <ShowItem key={show.id} show={show} style={styles.showItem} />
       ))}
     </View>
   );
@@ -41,5 +29,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
+    paddingVertical: 16,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  showItem: {
+    paddingTop: 16,
+    paddingHorizontal: 16,
   },
 });

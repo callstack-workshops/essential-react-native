@@ -1,3 +1,5 @@
+import { StyleProp, ViewStyle } from "react-native";
+
 type Image = {
   mobile: string;
   default: string;
@@ -11,4 +13,11 @@ export type Show = {
   overview: string;
   voteAverage: number;
   year: number;
+};
+
+export type TouchableProps = {
+  children: React.ReactNode;
+  onPress: () => void;
+  style?: StyleProp<ViewStyle>;
+  accessibilityRole?: string;
 };
