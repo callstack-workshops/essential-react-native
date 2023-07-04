@@ -1,9 +1,11 @@
 import { StyleProp, ViewStyle } from "react-native";
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 type Image = {
   mobile: string;
   default: string;
-  backkrop: string;
+  backdrop: string;
 };
 
 export type Show = {
@@ -21,3 +23,21 @@ export type TouchableProps = {
   style?: StyleProp<ViewStyle>;
   accessibilityRole?: string;
 };
+
+// navigation types
+export type RootStackParamList = {
+  Home: undefined;
+  Details: { show: Show };
+  Watched: undefined;
+};
+
+export type TabParamList = {
+  Shows: undefined;
+  Watched: undefined;
+};
+
+export type DetailsScreenRouteProp = RouteProp<RootStackParamList, "Details">;
+export type WatchedScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "Watched"
+>;

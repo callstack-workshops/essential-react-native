@@ -8,13 +8,18 @@ import {
   posterHeight,
   posterWidth,
 } from "../constants";
+import { DetailsScreenRouteProp } from "../types";
 
-export const DetailsScreen = ({ route }) => {
+type DetailsScreenProps = {
+  route: DetailsScreenRouteProp;
+};
+
+export const DetailsScreen = ({ route }: DetailsScreenProps) => {
   const insets = useSafeAreaInsets();
   const { name, year, images, voteAverage, overview } = route.params.show;
   return (
     <ScrollView contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}>
-      <View style={styles.container}>
+      <View>
         <Image
           source={{ uri: images.backdrop }}
           style={styles.backdrop}
@@ -70,6 +75,9 @@ const styles = StyleSheet.create({
   },
   year: {
     fontSize: 16,
+    marginTop: 8,
+  },
+  voteAverage: {
     marginTop: 8,
   },
   textHeader: {

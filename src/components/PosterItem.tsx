@@ -1,11 +1,24 @@
 import React, { memo } from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { posterHeight, posterWidth } from "../constants";
+import { Show, WatchedScreenNavigationProp } from "../types";
 
-const _PosterItem = ({ show, style }) => {
+type PosterItemProps = {
+  show: Show;
+  style?: StyleProp<ViewStyle>;
+};
+
+const _PosterItem = ({ show, style }: PosterItemProps) => {
   const { images } = show;
-  const { navigate } = useNavigation();
+  const { navigate } = useNavigation<WatchedScreenNavigationProp>();
 
   return (
     <TouchableOpacity

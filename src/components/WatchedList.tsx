@@ -1,12 +1,18 @@
 import React, { useCallback } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { Show } from "../types";
 import { PosterItem } from "./PosterItem";
 
-export const WatchedList = ({ shows, style }) => {
-  const keyExtractor = useCallback((item) => item.id.toString(), []);
+type WatchedListProps = {
+  shows: Show[];
+  style?: StyleProp<ViewStyle>;
+};
+
+export const WatchedList = ({ shows, style }: WatchedListProps) => {
+  const keyExtractor = useCallback((item: Show) => item.id.toString(), []);
 
   const renderItem = useCallback(
-    ({ item }) => (
+    ({ item }: { item: Show }) => (
       <PosterItem key={item.id} show={item} style={styles.posterItem} />
     ),
     []
