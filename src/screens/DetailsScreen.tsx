@@ -1,13 +1,15 @@
 import React from "react";
-import { Image, StyleSheet, ScrollView, Text, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  ScrollView,
+  Text,
+  View,
+  useWindowDimensions,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { colors } from "../colors";
-import {
-  backdropHeight,
-  backdropWidth,
-  posterHeight,
-  posterWidth,
-} from "../constants";
+import { backdropHeight, posterHeight, posterWidth } from "../constants";
 import { DetailsScreenRouteProp } from "../types";
 
 type DetailsScreenProps = {
@@ -17,12 +19,14 @@ type DetailsScreenProps = {
 export const DetailsScreen = ({ route }: DetailsScreenProps) => {
   const insets = useSafeAreaInsets();
   const { name, year, images, voteAverage, overview } = route.params.show;
+  const { width } = useWindowDimensions();
+
   return (
     <ScrollView contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}>
       <View>
         <Image
           source={{ uri: images.backdrop }}
-          style={styles.backdrop}
+          style={[styles.backdrop, { width }]}
           accessibilityIgnoresInvertColors
         />
         <Image
@@ -47,7 +51,6 @@ export const DetailsScreen = ({ route }: DetailsScreenProps) => {
 
 const styles = StyleSheet.create({
   backdrop: {
-    width: backdropWidth,
     height: backdropHeight,
   },
   poster: {

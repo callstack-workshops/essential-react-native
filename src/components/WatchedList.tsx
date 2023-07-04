@@ -25,16 +25,19 @@ export const WatchedList = ({ shows, style }: WatchedListProps) => {
       renderItem={renderItem}
       style={style}
       contentContainerStyle={styles.contentContainer}
+      keyboardDismissMode="on-drag"
+      numColumns={3}
     />
   );
 };
 
 const styles = StyleSheet.create({
   posterItem: {
-    paddingBottom: 8,
-    paddingHorizontal: 16,
+    paddingBottom: 4,
+    paddingRight: 4,
   },
   contentContainer: {
     paddingBottom: 16,
+    paddingHorizontal: 16,
   },
 });

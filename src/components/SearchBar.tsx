@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { View, TextInput, Text, StyleSheet } from "react-native";
+import { Keyboard, View, TextInput, Text, StyleSheet } from "react-native";
 import { colors } from "../colors";
 import { Touchable } from "./Touchable";
 
@@ -11,6 +11,7 @@ type SearchBarProps = {
 export const SearchBar = ({ onChangeText, value }: SearchBarProps) => {
   const onCancel = useCallback(() => {
     onChangeText("");
+    Keyboard.dismiss();
   }, [onChangeText]);
 
   return (

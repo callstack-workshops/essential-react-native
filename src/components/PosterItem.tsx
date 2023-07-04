@@ -6,9 +6,9 @@ import {
   View,
   StyleProp,
   ViewStyle,
+  useWindowDimensions,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { posterHeight, posterWidth } from "../constants";
 import { Show, WatchedScreenNavigationProp } from "../types";
 
 type PosterItemProps = {
@@ -19,6 +19,7 @@ type PosterItemProps = {
 const _PosterItem = ({ show, style }: PosterItemProps) => {
   const { images } = show;
   const { navigate } = useNavigation<WatchedScreenNavigationProp>();
+  const { width } = useWindowDimensions();
 
   return (
     <TouchableOpacity
@@ -29,7 +30,7 @@ const _PosterItem = ({ show, style }: PosterItemProps) => {
       <View style={[styles.container, style]}>
         <Image
           source={{ uri: images.mobile }}
-          style={styles.image}
+          style={{ width: width / 3 - 12, height: width / 2 }}
           accessibilityIgnoresInvertColors
         />
       </View>
@@ -40,10 +41,6 @@ const _PosterItem = ({ show, style }: PosterItemProps) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-  },
-  image: {
-    width: posterWidth,
-    height: posterHeight,
   },
 });
 
