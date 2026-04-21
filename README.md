@@ -17,4 +17,3 @@ You can find all the exercises guidelines in the [GUIDANCE.md](../../tree/00-gui
 7. Using native APIs
 8. Data persistence
 9. Animations & Gestures
-10. Native modules
