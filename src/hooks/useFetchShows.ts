@@ -25,17 +25,17 @@ export const useFetchShows = (path: string, storageKey: string) => {
         await AsyncStorage.setItem(storageKey, JSON.stringify(shows));
         setShows(shows);
         setIsLoading(false);
-      } catch (e) {
+      } catch (_error) {
         alert("Something Went wrong");
         return;
       }
     },
-    [path, storageKey]
+    [path, storageKey],
   );
 
   useEffect(() => {
     const controller = new AbortController();
-    fetchShows(controller);
+    void fetchShows(controller);
 
     return () => {
       controller.abort();

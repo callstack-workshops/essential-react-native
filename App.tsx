@@ -1,7 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator, StackNavigationOptions } from "@react-navigation/stack";
+import {
+  createStackNavigator,
+  StackNavigationOptions,
+} from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -10,7 +13,6 @@ import { DetailsScreen } from "./src/screens/DetailsScreen";
 import { colors } from "./src/colors";
 import { WatchedScreen } from "./src/screens/WatchedScreen";
 import { RootStackParamList, TabParamList } from "./src/types";
-
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -23,7 +25,7 @@ const TabStack = () => (
   <Tab.Navigator
     screenOptions={({ route }) => ({
       tabBarIcon: ({ color, size }) => {
-        const iconName = route.name === "Shows" ? "md-home" : "md-tv";
+        const iconName = route.name === "Shows" ? "home" : "tv";
         // You can return any component that you like here!
         return <Ionicons name={iconName} size={size} color={color} />;
       },

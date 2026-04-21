@@ -30,21 +30,21 @@ export const ShowList = ({ sections, style }: ShowListProps) => {
     ({ item }: { item: Show }) => (
       <ShowItem key={item.id} show={item} style={styles.showItem} />
     ),
-    []
+    [],
   );
 
   const renderSectionHeader = useCallback(
     ({ section: { title } }: { section: Section }) => (
       <Text style={styles.sectionTitle}>{title}</Text>
     ),
-    []
+    [],
   );
 
   const contentContainerStyle = useMemo(
     () => ({
       paddingBottom: insets.bottom + 16,
     }),
-    [insets.bottom]
+    [insets.bottom],
   );
 
   return (

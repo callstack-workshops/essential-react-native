@@ -10,7 +10,7 @@ import { storageWatchedKey } from "../constants";
 export const WatchedScreen = () => {
   const { shows: data, isLoading } = useFetchShows(
     "watched",
-    storageWatchedKey
+    storageWatchedKey,
   );
   const { shows, onSearchChange, value } = useSearchShows(data);
 
