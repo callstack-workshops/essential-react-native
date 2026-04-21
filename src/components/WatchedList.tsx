@@ -26,14 +26,14 @@ export const WatchedList = ({ shows, style }: WatchedListProps) => {
     ({ item }: { item: Show }) => (
       <PosterItem key={item.id} show={item} style={styles.posterItem} />
     ),
-    []
+    [],
   );
 
   const animateFab = useCallback(
     (toValue: number) => {
       isFabVisible.current = false;
       Animated.timing(animatedTranslateY, {
-        toValue: toValue,
+        toValue,
         duration: 150,
         useNativeDriver: true,
       }).start(() => {
@@ -42,7 +42,7 @@ export const WatchedList = ({ shows, style }: WatchedListProps) => {
         }
       });
     },
-    [animatedTranslateY]
+    [animatedTranslateY],
   );
 
   const onFabPress = useCallback(() => {

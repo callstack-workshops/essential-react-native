@@ -21,7 +21,7 @@ export const FAB = ({ onPress, style }: FABProps) => {
         onPress={onPress}
         style={styles.container}
       >
-        <Ionicons name="ios-add" size={24} />
+        <Ionicons name="add" size={24} />
       </Touchable>
     </Animated.View>
   );
