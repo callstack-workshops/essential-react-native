@@ -8,7 +8,7 @@ export const useSearchShows = (data: Show[]) => {
   }, []);
 
   const shows = data.filter(
-    (s) => s.name.toLowerCase().search(value.toLowerCase()) !== -1
+    (s) => s.name.toLowerCase().search(value.toLowerCase()) !== -1,
   );
 
   return { shows, onSearchChange, value };
