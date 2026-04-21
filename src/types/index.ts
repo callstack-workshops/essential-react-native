@@ -1,6 +1,6 @@
 import { StyleProp, ViewStyle } from "react-native";
-import { RouteProp } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 type Image = {
   mobile: string;

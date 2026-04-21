@@ -15,7 +15,7 @@ export const WatchedList = ({ shows, style }: WatchedListProps) => {
     ({ item }: { item: Show }) => (
       <PosterItem key={item.id} show={item} style={styles.posterItem} />
     ),
-    []
+    [],
   );
 
   return (
