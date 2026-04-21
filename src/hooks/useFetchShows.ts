@@ -16,17 +16,17 @@ export const useFetchShows = (path: string) => {
         const shows = await res.json();
         setShows(shows);
         setIsLoading(false);
-      } catch (e) {
+      } catch (_error) {
         alert("Something Went wrong");
         return;
       }
     },
-    [path]
+    [path],
   );
 
   useEffect(() => {
     const controller = new AbortController();
-    fetchShows(controller);
+    void fetchShows(controller);
 
     return () => {
       controller.abort();
