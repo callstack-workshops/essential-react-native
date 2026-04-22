@@ -88,29 +88,3 @@ the Dimensions API `useWindowDimensions`.
 download them everytime.
 * *Note*: Try to close the connection with our server to see if it still shows data when reloading 
 the app.
-
-### 8. Animations & Gestures
-
-* Let's add a FAB button in the `Watched` tab.
-* The button will be visible at first, and it will hide when you start scrolling.
-* When the scrolling ends, the button will be visible again.
-* For the previous points, animate the `translateY` property using `useNativeDriver: true`.
-* Show an `Alert` when clicking the button that will say: "Feature not yet implemented!".
-* *Note* feel free to use the following hook:
-```js
-import { useRef } from "react";
-import { Animated } from "react-native";
-
-export const useAnimatedValue = (initialValue) => {
-  const value = useRef();
-
-  if (!value.current) {
-    value.current = new Animated.Value(initialValue);
-  }
-
-  return value.current;
-};
-```
-* See the following gif for the desired effect:
-
-![](./images/09.gif)
