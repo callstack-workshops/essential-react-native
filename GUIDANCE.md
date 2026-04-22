@@ -2,7 +2,7 @@
 
 ### 1. Hello world
 
-* Start a new project using the `expo-cli`.
+* Start a new project using the `expo-cli`. When in doubt, you can always refer to the [documentation](https://reactnative.dev/docs/environment-setup).
 * Choose "Managed workflow" and "blank".
 * Modify the `App.tsx` file to render a "Hello world!". Run it on iOS and Android.
 * Set up https://github.com/callstack/eslint-config-callstack.
