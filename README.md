@@ -8,13 +8,10 @@ You can find all the exercises guidelines in the [GUIDANCE.md](../../tree/00-gui
 
 ## Agenda
 
-1. What is React Native
-2. Set up the project with Expo
-3. Core components
-4. Styling
-5. Lists
-6. Navigation
-7. Using native APIs
-8. Data persistence
-9. Animations & Gestures
-10. Native modules
+1. Hello World
+2. Core components
+3. Styling
+4. Lists
+5. Navigation
+6. Using native APIs
+7. Data persistence
